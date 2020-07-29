@@ -1,0 +1,35 @@
+.itemLight {
+  margin-bottom: 5px;
+  color: #363638;
+}
+
+.itemDark {
+  margin-bottom: 5px;
+  color: #f5f5f5;
+}
+
+p {
+  margin: 0px;
+  display: inline-block;
+}
+
+.btnLight {
+  display: inline-block;
+  margin: 0px;
+  margin-left: 10px;
+  border: 1px solid #b9b9bb;
+  background-color: transparent;
+  border-radius: 4px 4px 4px 4px;
+  color: #363638;
+}
+
+
+.btnDark {
+  display: inline-block;
+  margin: 0px;
+  margin-left: 10px;
+  border: 1px solid #f5f5f5;
+  background-color: transparent;
+  border-radius: 4px 4px 4px 4px;
+  color: #f5f5f5;
+}

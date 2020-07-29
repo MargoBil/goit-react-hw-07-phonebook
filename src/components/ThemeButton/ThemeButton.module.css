@@ -1,0 +1,25 @@
+.btnLight {
+    width: 100px;
+    height: 25px;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid rgb(177, 176, 176);
+    color: rgb(136, 134, 134);
+    font-weight: bold;
+    background-color: transparent;
+    cursor: pointer;
+    outline: unset;
+    position: fixed;
+  }
+  
+  .btnDark {
+    width: 100px;
+    height: 25px;
+    background-color: transparent;
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid rgb(241, 243, 243);
+    cursor: pointer;
+    outline: unset;
+    position: fixed;
+  }

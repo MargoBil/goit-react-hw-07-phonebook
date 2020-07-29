@@ -1,0 +1,16 @@
+export const ADD_REQUEST = "name/addRequest";
+export const ADD_SUCCESS = "name/addSuccess";
+export const ADD_FAILURE = "name/addFailure";
+export const FETCH_REQUEST = "names/fetchRequest";
+export const FETCH_SUCCESS = "names/fetchSuccess";
+export const FETCH_FAILURE = "names/fetchFailure";
+export const DELETE_REQUEST = "name/deleteRequest";
+export const DELETE_SUCCESS = "name/deleteSuccess";
+export const DELETE_FAILURE = "name/deleteFailure";
+export const TOGGLE_THEME_REQUEST = "theme/toggleRequest";
+export const TOGGLE_THEME_SUCCESS = "theme/toggleSuccess";
+export const TOGGLE_THEME_FAILURE = "theme/toggleFailure";
+export const FETCH_THEME_REQUEST = "theme/fetchRequest";
+export const FETCH_THEME_SUCCESS = "theme/fetchSuccess";
+export const FETCH_THEME_FAILURE = "theme/fetchFailure";
+export const CHANGE_FILTER = 'name/filter';

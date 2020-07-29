@@ -1,0 +1,16 @@
+.section {
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nameLight {
+  text-align: left;
+  color: black;
+}
+
+.nameDark {
+  text-align: left;
+  color: whitesmoke;
+}
