@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import operations from '../../redux/actions/operations';
+import themeSelector from '../../redux/celectors/themeSelectors';
+import contactsSelectors from '../../redux/celectors/contactsCelectors';
 
 import s from './ContactItem.module.css';
 
@@ -18,14 +20,10 @@ const ContactItem = ({contact, number, theme, onDeleteContact}) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const item = state.contacts.items.find(item => item.id === ownProps.id);
-  return {
-    contact: item.name,
-    number: item.number,
-    theme: state.theme.themeColor,
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+  ...contactsSelectors.getContact(state, ownProps),
+  theme: themeSelector.getTheme(state),
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onDeleteContact: () => dispatch(operations.deleteName(ownProps.id)),

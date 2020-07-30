@@ -4,11 +4,24 @@ import axios from 'axios';
 const addName = ({name, number}) => dispatch => {
   dispatch(actions.addNameRequest());
   axios
-    .post('http://localhost:2000/contacts', {name, number})
+    .get('http://localhost:2000/contacts')
     .then(({data}) => {
-      dispatch(actions.addNameSuccess(data));
+      const contacts = data;
+      const findIdenticalName = contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase(),
+      );
+      if (!findIdenticalName) {
+        axios
+          .post('http://localhost:2000/contacts', {name, number})
+          .then(({data}) => {
+            dispatch(actions.addNameSuccess(data));
+          })
+          .catch(error => dispatch(actions.addNameFailure(error)));
+      } else {
+        alert('This name already exists!');
+      }
     })
-    .catch(error => dispatch(actions.addNameFailure(error)));
+    .catch(error => error);
 };
 
 const fetchNames = () => dispatch => {
@@ -36,12 +49,12 @@ const toggleTheme = () => dispatch => {
   axios
     .get('http://localhost:2000/theme/')
     .then(({data}) => {
-      let themeColor;
+      let currentThemeColor;
       data.themeColor === 'Light'
-        ? (themeColor = 'Dark')
-        : (themeColor = 'Light');
+        ? (currentThemeColor = 'Dark')
+        : (currentThemeColor = 'Light');
       axios
-        .put('http://localhost:2000/theme/', {themeColor: themeColor})
+        .put('http://localhost:2000/theme/', {themeColor: currentThemeColor})
         .then(({data}) => {
           dispatch(actions.toggleThemeSuccess(data.themeColor));
         })

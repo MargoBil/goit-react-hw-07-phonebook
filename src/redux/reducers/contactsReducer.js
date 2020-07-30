@@ -10,9 +10,9 @@ const onDeleteContact = (state, action) => {
   return state.filter(contact => contact.id !== action.payload);
 };
 
-const onChangeFilter = (state, action) => action.payload;
+const onChangeFilter = (_, action) => action.payload;
 
-const onFetchNames = (state, action) => action.payload;
+const onFetchNames = (_, action) => action.payload;
 
 export const items = createReducer([], {
   [actions.addNameSuccess]: onAddName,

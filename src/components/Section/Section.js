@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import themeSelectors from '../../redux/celectors/themeSelectors';
+
 import s from './Section.module.css';
 
 const Section = ({title, theme, children}) => {
@@ -12,8 +14,8 @@ const Section = ({title, theme, children}) => {
   );
 };
 
-const mapStateToProps = ({theme}) => ({
-  theme: theme.themeColor,
+const mapStateToProps = state => ({
+  theme: themeSelectors.getTheme(state),
 });
 
 export default connect(mapStateToProps)(Section);
