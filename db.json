@@ -1,12 +1,6 @@
 {
-  "contacts": [
-    {
-      "name": "Masha",
-      "number": "",
-      "id": 1
-    }
-  ],
+  "contacts": [],
   "theme": {
-    "themeColor": "Dark"
+    "themeColor": "Light"
   }
 }

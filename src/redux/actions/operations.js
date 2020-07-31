@@ -31,23 +31,14 @@ const deleteName = id => dispatch => {
     .catch(error => dispatch(actions.deleteNameFailure(error)));
 };
 
-const toggleTheme = () => dispatch => {
+const toggleTheme = (themeColor) => dispatch => {
   dispatch(actions.toggleThemeRequest);
   axios
-    .get('http://localhost:2000/theme/')
+    .put('http://localhost:2000/theme/', {themeColor: themeColor})
     .then(({data}) => {
-      let currentThemeColor;
-      data.themeColor === 'Light'
-        ? (currentThemeColor = 'Dark')
-        : (currentThemeColor = 'Light');
-      axios
-        .put('http://localhost:2000/theme/', {themeColor: currentThemeColor})
-        .then(({data}) => {
-          dispatch(actions.toggleThemeSuccess(data.themeColor));
-        })
-        .catch(error => dispatch(actions.toggleThemeFailure(error)));
+      dispatch(actions.toggleThemeSuccess(data));
     })
-    .catch(error => error);
+    .catch(error => dispatch(actions.toggleThemeFailure(error)));
 };
 
 const fetchTheme = () => dispatch => {
