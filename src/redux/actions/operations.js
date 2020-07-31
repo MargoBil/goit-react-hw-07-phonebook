@@ -4,24 +4,11 @@ import axios from 'axios';
 const addName = ({name, number}) => dispatch => {
   dispatch(actions.addNameRequest());
   axios
-    .get('http://localhost:2000/contacts')
+    .post('http://localhost:2000/contacts', {name, number})
     .then(({data}) => {
-      const contacts = data;
-      const findIdenticalName = contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase(),
-      );
-      if (!findIdenticalName) {
-        axios
-          .post('http://localhost:2000/contacts', {name, number})
-          .then(({data}) => {
-            dispatch(actions.addNameSuccess(data));
-          })
-          .catch(error => dispatch(actions.addNameFailure(error)));
-      } else {
-        alert('This name already exists!');
-      }
+      dispatch(actions.addNameSuccess(data));
     })
-    .catch(error => error);
+    .catch(error => dispatch(actions.addNameFailure(error)));
 };
 
 const fetchNames = () => dispatch => {
