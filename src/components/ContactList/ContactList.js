@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import ContactItem from '../ContactItem/ContactItem';
-import contactsSelectors from '../../redux/celectors/contactsCelectors';
+import contactsSelectors from '../../redux/celectors/contactsSelectors';
 
 import s from './ContactList.module.css';
 

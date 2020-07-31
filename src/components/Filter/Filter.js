@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {changeFilter} from '../../redux/actions/index';
-import contactsSelectors from '../../redux/celectors/contactsCelectors';
+import {changeFilter} from '../../redux/actions';
+import contactsSelectors from '../../redux/celectors/contactsSelectors';
 import themeSelectores from '../../redux/celectors/themeSelectors';
 
 import s from './Filter.module.css';

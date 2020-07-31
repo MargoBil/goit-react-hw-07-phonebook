@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import operations from '../../redux/actions/operations';
 import themeSelector from '../../redux/celectors/themeSelectors';
-import contactsSelectors from '../../redux/celectors/contactsCelectors';
+import contactsSelectors from '../../redux/celectors/contactsSelectors';
 
 import s from './ContactItem.module.css';
 

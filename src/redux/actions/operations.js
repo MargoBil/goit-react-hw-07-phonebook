@@ -1,54 +1,60 @@
 import * as actions from './index';
 import axios from 'axios';
 
-const addName = ({name, number}) => dispatch => {
-  dispatch(actions.addNameRequest());
-  axios
-    .post('http://localhost:2000/contacts', {name, number})
-    .then(({data}) => {
-      dispatch(actions.addNameSuccess(data));
-    })
-    .catch(error => dispatch(actions.addNameFailure(error)));
+axios.defaults.baseURL = 'http://localhost:2000';
+
+const addName = ({name, number}) => async dispatch => {
+  try {
+    dispatch(actions.addNameRequest());
+    const {data} = await axios.post('/contacts', {name, number});
+    dispatch(actions.addNameSuccess(data));
+  } catch (error) {
+    dispatch(actions.addNameFailure(error));
+    return [];
+  }
 };
 
-const fetchNames = () => dispatch => {
-  dispatch(actions.fetchNamesRequest);
-  axios
-    .get('http://localhost:2000/contacts')
-    .then(({data}) => {
-      dispatch(actions.fetchNamesSuccess(data));
-    })
-    .catch(error => dispatch(actions.fetchNamesFailure(error)));
+const fetchNames = () => async dispatch => {
+  try {
+    dispatch(actions.fetchNamesRequest);
+    const {data} = await axios.get('/contacts');
+    dispatch(actions.fetchNamesSuccess(data));
+  } catch (error) {
+    dispatch(actions.fetchNamesFailure(error));
+    return [];
+  }
 };
 
-const deleteName = id => dispatch => {
-  dispatch(actions.deleteNameRequest);
-  axios
-    .delete(`http://localhost:2000/contacts/${id}`)
-    .then(() => {
-      dispatch(actions.deleteNameSuccess(id));
-    })
-    .catch(error => dispatch(actions.deleteNameFailure(error)));
+const deleteName = id => async dispatch => {
+  try {
+    dispatch(actions.deleteNameRequest);
+    await axios.delete(`/contacts/${id}`);
+    dispatch(actions.deleteNameSuccess(id));
+  } catch (error) {
+    dispatch(actions.deleteNameFailure(error));
+  }
 };
 
-const toggleTheme = (themeColor) => dispatch => {
-  dispatch(actions.toggleThemeRequest);
-  axios
-    .put('http://localhost:2000/theme/', {themeColor: themeColor})
-    .then(({data}) => {
-      dispatch(actions.toggleThemeSuccess(data));
-    })
-    .catch(error => dispatch(actions.toggleThemeFailure(error)));
+const toggleTheme = themeColor => async dispatch => {
+  try {
+    dispatch(actions.toggleThemeRequest);
+    const {data} = await axios.put('/theme/', {themeColor: themeColor});
+    dispatch(actions.toggleThemeSuccess(data));
+  } catch (error) {
+    dispatch(actions.toggleThemeFailure(error));
+    return [];
+  }
 };
 
-const fetchTheme = () => dispatch => {
-  dispatch(actions.fetchThemeRequest);
-  axios
-    .get('http://localhost:2000/theme')
-    .then(({data}) => {
-      dispatch(actions.fetchThemeSuccess(data.themeColor));
-    })
-    .catch(error => dispatch(actions.fetchThemeFailure(error)));
+const fetchTheme = () => async dispatch => {
+  try {
+    dispatch(actions.fetchThemeRequest);
+    const {data} = await axios.get('/theme');
+    dispatch(actions.fetchThemeSuccess(data.themeColor));
+  } catch (error) {
+    dispatch(actions.fetchThemeFailure(error));
+    return [];
+  }
 };
 
 export default {

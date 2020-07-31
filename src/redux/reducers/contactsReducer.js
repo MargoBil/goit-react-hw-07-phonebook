@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
 
-import * as actions from '../actions/index';
+import * as actions from '../actions';
 
 const onAddName = (state, action) => {
   return [...state, action.payload];

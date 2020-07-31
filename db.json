@@ -1,5 +1,11 @@
 {
-  "contacts": [],
+  "contacts": [
+    {
+      "name": "qqqqqq",
+      "number": "",
+      "id": 6
+    }
+  ],
   "theme": {
     "themeColor": "Light"
   }
