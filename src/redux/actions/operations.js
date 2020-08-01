@@ -10,24 +10,22 @@ const addName = ({name, number}) => async dispatch => {
     dispatch(actions.addNameSuccess(data));
   } catch (error) {
     dispatch(actions.addNameFailure(error));
-    return [];
   }
 };
 
 const fetchNames = () => async dispatch => {
   try {
-    dispatch(actions.fetchNamesRequest);
+    dispatch(actions.fetchNamesRequest());
     const {data} = await axios.get('/contacts');
     dispatch(actions.fetchNamesSuccess(data));
   } catch (error) {
     dispatch(actions.fetchNamesFailure(error));
-    return [];
   }
 };
 
 const deleteName = id => async dispatch => {
   try {
-    dispatch(actions.deleteNameRequest);
+    dispatch(actions.deleteNameRequest());
     await axios.delete(`/contacts/${id}`);
     dispatch(actions.deleteNameSuccess(id));
   } catch (error) {
@@ -37,23 +35,21 @@ const deleteName = id => async dispatch => {
 
 const toggleTheme = themeColor => async dispatch => {
   try {
-    dispatch(actions.toggleThemeRequest);
-    const {data} = await axios.put('/theme/', {themeColor: themeColor});
+    dispatch(actions.toggleThemeRequest());
+    const {data} = await axios.put('/theme', {themeColor: themeColor});
     dispatch(actions.toggleThemeSuccess(data));
   } catch (error) {
     dispatch(actions.toggleThemeFailure(error));
-    return [];
   }
 };
 
 const fetchTheme = () => async dispatch => {
   try {
-    dispatch(actions.fetchThemeRequest);
+    dispatch(actions.fetchThemeRequest());
     const {data} = await axios.get('/theme');
     dispatch(actions.fetchThemeSuccess(data.themeColor));
   } catch (error) {
     dispatch(actions.fetchThemeFailure(error));
-    return [];
   }
 };
 
